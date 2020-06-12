@@ -1,1 +1,10 @@
 # python-count-strongly-connected-components-of-graph
+This Python program counts the number of strongly connected compoonents in a directed graph. The first line of input has two space delimited integers, the number of vertices n and the number of edges m. Each subsequent line of m lines of input has two space delimited integers u and v for a directed edge from u to v.
+
+During a depth first search of all the nodes of a reversed graph with all edges reversed in direction, a post order number is determined for each node. By using the reversed version of the graph, the largest postorder number identifies a source in the reversed version of the graph. The source in the reversed version of the graph is a sink in the original graph. Starting from the sink in the original graph, the original graph is explored. All such explored nodes constitute a single strongly connected component.
+
+As the depth first search progresses, an AVL tree is populated with the post order number as the key and the node number as another field. The AVL tree facilitates fast identification of the sink in the orignal graph, since the largest postorder number is found by recursively traversing the AVL tree to the right until reaching a null right child. When all nodes of the strongly connected component are identified, then all postorder numbers corresponding to those nodes are removed from the AVL tree. When the nodes are removed from the AVL tree, any  edge is removed from the original and reversed graphs, if either node of the edge is a removed node.
+
+During the depth first search, two hash maps are constructed. A first hash map is from postorder number to node number. A second hash map is from node number to postorder number.  The hash maps assist with removing edges from the original and reversed graphs. 
+
+The process is repeated until the AVL tree is empty. Even after nodes are removed from the AVL tree, the AVL tree facilitates fast identification of the largest postorder number that remains in the reversed graph, and concomitantly a sink in the original graph. With each iteration, a count of strongly connected components is iterated.
