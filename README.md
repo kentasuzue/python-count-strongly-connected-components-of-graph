@@ -1,5 +1,5 @@
 # python-count-strongly-connected-components-of-graph
-This Python program counts the number of strongly connected compoonents in a directed graph. The first line of input has two space delimited integers, the number of vertices n and the number of edges m. Each subsequent line of m lines of input has two space delimited integers u and v for a directed edge from u to v.
+This Python program counts the number of strongly connected components in a directed graph. The first line of input has two space delimited integers, the number of vertices n and the number of edges m. Each subsequent line of m lines of input has two space delimited integers u and v for a directed edge from u to v.
 
 During a depth first search of all the nodes of a reversed graph with all edges reversed in direction, a post order number is determined for each node. By using the reversed version of the graph, the largest postorder number identifies a source in the reversed version of the graph. The source in the reversed version of the graph is a sink in the original graph. Starting from the sink in the original graph, the original graph is explored. All such explored nodes constitute a single strongly connected component.
 
